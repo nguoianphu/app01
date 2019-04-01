@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common');
 
-const devServerPort = 8081;
+const devServerPort = 8080;
 
 module.exports = function() {
   return webpackMerge(commonConfig({ mode: 'development' }), {
@@ -29,7 +29,8 @@ module.exports = function() {
       headers: {
           "Access-Control-Allow-Origin": "*"
       },
-      host: "0.0.0.0"
+      host: "0.0.0.0",
+      disableHostCheck: true,
     },
     output: {
       publicPath: "/"

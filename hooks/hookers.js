@@ -139,7 +139,7 @@ module.exports = function (ctx) {
 				srcFile = path.resolve(__dirname, '../webpack/dev_helpers/device_router.html'),
 				targetFile = path.resolve(wwwFolder, 'index.html'),
 
-				defaultCsp = `default-src *; script-src 'self' data: 'unsafe-inline' 'unsafe-eval' http://127.0.0.1:8081 http://LOCIP:8081; object-src 'self' data: http://127.0.0.1:8081 http://LOCIP:8081; style-src 'self' 'unsafe-inline' data: ; img-src *; media-src 'self' data: http://127.0.0.1:8081 http://LOCIP:8081; frame-src 'self' data: http://127.0.0.1:8081 http://LOCIP:8081; font-src *; connect-src 'self' data: http://127.0.0.1:8081 http://LOCIP:8081`,
+				defaultCsp = `default-src *; script-src 'self' data: 'unsafe-inline' 'unsafe-eval' http://127.0.0.1:8080 http://LOCIP:8080; object-src 'self' data: http://127.0.0.1:8080 http://LOCIP:8080; style-src 'self' 'unsafe-inline' data: ; img-src *; media-src 'self' data: http://127.0.0.1:8080 http://LOCIP:8080; frame-src 'self' data: http://127.0.0.1:8080 http://LOCIP:8080; font-src *; connect-src 'self' data: http://127.0.0.1:8080 http://LOCIP:8080`,
 
 				cheerio = require('cheerio'),
 				$ = cheerio.load(fs.readFileSync(srcFile, 'utf-8')),
@@ -202,11 +202,11 @@ module.exports = function (ctx) {
 			let defer = new Q.defer(),
 				outText = '',
 				isResultFound = false,
-				args = [`"${webpackDevServerPath}"`, '--hot', '--inline', '--env.devserver', '--' + platform, `--public ${getRouterIpAddr()}:8081`, '--env.devserver'],
+				args = [`"${webpackDevServerPath}"`, '--hot', '--inline', '--env.devserver', '--' + platform, `--public ${getRouterIpAddr()}:8080`, '--env.devserver'],
 				run = epipeBombPath
 
 			if (os.platform() === 'win32') {
-				args = ['--hot', '--inline', '--env.devserver', '--' + platform, `--public ${getRouterIpAddr()}:8081`, '--env.devserver']
+				args = ['--hot', '--inline', '--env.devserver', '--' + platform, `--public ${getRouterIpAddr()}:8080`, '--env.devserver']
 				run = `"${webpackDevServerPath}.cmd"`
 			}
 
